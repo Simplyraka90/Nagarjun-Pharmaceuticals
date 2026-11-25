@@ -1,0 +1,5 @@
+'use client';
+import {motion} from 'framer-motion';
+import Link from 'next/link';
+import {ArrowRight,Leaf} from 'lucide-react';
+export default function Hero(){return <section className="hero newhero"><motion.div initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{duration:.65}} className="herotext"><small className="eyebrow"><Leaf size={16}/> AYURVEDIC HERITAGE SINCE 1996</small><h1>Rooted in nature.<br/><em>Inspired by tradition.</em></h1><p>Explore the Shree Nagarjun collection of classical Ayurvedic formulations and herbal powders.</p><div className="actions"><Link className="btn" href="/products">Discover products <ArrowRight size={18}/></Link><Link className="outline" href="/story">Our story</Link></div></motion.div><div className="heroart"><img src="/images/botanical.svg" alt="Original botanical illustration"/><motion.div className="hero-label" initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:.3}}><Leaf/> <div>Authentic Ayurveda<small>Modern science</small></div></motion.div></div></section>}

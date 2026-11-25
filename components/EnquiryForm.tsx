@@ -1,0 +1,5 @@
+'use client';
+import {useState,useEffect} from 'react';
+import {ArrowRight} from 'lucide-react';
+import type {Enquiry} from '../lib/data';
+export default function EnquiryForm({onSave}:{onSave:(e:Enquiry)=>void}){const [sent,setSent]=useState(false),[message,setMessage]=useState('');useEffect(()=>{const q=new URLSearchParams(window.location.search);if(q.has('product'))setMessage('Product enquiry: '+q.get('product')+' / '+(q.get('pack')||''));},[]);return <form className="panel form" onSubmit={e=>{e.preventDefault();const f=new FormData(e.currentTarget);onSave({id:crypto.randomUUID(),name:String(f.get('name')),email:String(f.get('email')),message:String(f.get('message')),status:'New'});e.currentTarget.reset();setMessage('');setSent(true)}}><label>Name<input name="name" required/></label><label>Email<input name="email" type="email" required/></label><label>Enquiry<textarea name="message" required rows={5} value={message} onChange={e=>setMessage(e.target.value)}/></label><button className="btn">Submit enquiry <ArrowRight size={18}/></button>{sent&&<p role="status">Saved locally for this demo. No message was sent.</p>}</form>}
